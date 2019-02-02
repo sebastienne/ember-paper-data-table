@@ -2,29 +2,51 @@
 
 table.data-table {
   thead {
+    th {
+      padding: 0;
+    }
+
+    .md-button {
+      font-size: 0.75rem;
+      height: 100%;
+      margin: 0;
+      padding: 0.4rem 0;
+      text-align: left;
+      text-transform: initial;
+      width: 100%;
+
+      &.md-focused {
+        background-color: transparent;
+      }
+    }
+
+    .md-button:hover {
+      background-color: transparent;
+    }
+
     .sorted {
       md-icon {
         transition: transform 0.25s, opacity 0.25s;
+        opacity: 1 !important;
 
         &.asc {
-          transform: rotate(0deg);
+          transform: translateY(-15%) rotate(180deg);
         }
 
         &.desc {
-          transform: rotate(180deg);
+          transform: rotate(0deg);
         }
       }
     }
 
     .sortable {
-      &:not(.sorted):hover {
-        span::before {
-          content: unset;
-        }
+      md-icon {
+        opacity: 0;
+      }
 
-        md-icon::before {
-          color: rgb(62%,62%,62%);
-          content: 'arrow_upward';
+      &:hover {
+        md-icon {
+          opacity: 0.5;
         }
       }
     }
@@ -65,7 +87,7 @@ table.data-table {
 }
 
 .data-table-search {
-  md-icon[md-icon-font="close"] {
+  md-icon[md-icon-font='close'] {
     cursor: pointer;
   }
 
@@ -80,9 +102,9 @@ table.data-table {
     input {
       width: 0;
 
-      -webkit-transition: all .5s;
-	    -moz-transition: all .5s;
-	    transition: all .5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      transition: all 0.5s;
     }
 
     &.expanded input {

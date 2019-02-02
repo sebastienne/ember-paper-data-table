@@ -22,20 +22,25 @@ export default TextSearchComponent.extend({
       this.$('input').focusout();
     });
   },
-  click() {
-    if (this.get('isExpanded')) { this._closeSearch(); } else { this._openSearch(); }
-  },
   keyUp(e) {
-    if (this.get('isExpanded') && e.keyCode === 27) { // escape
+    if (this.get('isExpanded') && e.keyCode === 27) {
+      // escape
       this._closeSearch();
-    }
-    else if (!this.get('auto') && this.get('isExpanded') && e.keyCode === 13) { // enter
+    } else if (
+      !this.get('auto') &&
+      this.get('isExpanded') &&
+      e.keyCode === 13
+    ) {
+      // enter
       this.set('filter', this.get('value')); // trigger non-automatic search
     }
   },
   actions: {
-    toggleExpansion() {
-      if (this.get('isExpanded')) { this._closeSearch(); } else { this._openSearch(); }
+    closeSearch() {
+      this._closeSearch();
+    },
+    openSearch() {
+      this._openSearch();
     }
   }
 });
